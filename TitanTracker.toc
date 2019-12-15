@@ -1,0 +1,11 @@
+## Interface: 11303
+## Title: TitanTracker
+## Notes: Titan plugin to manage tracking spells.
+## Author: Mackattack - Stonespine
+## Version: 0.9
+
+## SavedVariables: TitanTrackerDB
+
+embeds.xml
+
+TitanTracker.lua
