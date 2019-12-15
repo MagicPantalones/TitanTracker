@@ -7,9 +7,9 @@ TitanTracker is a simple addon that collects all your tracking spells into a min
 * Left-click minimap button to get a list of available tracking spells.
 * Rigth-click button, or select Stop Tracking, to dismiss tracking spell.
 * /ttoggle to toggle the minimap button visibility.
-* If you add it to Titanpanel or Fubar it should have the same functionallity.<br/>
+* If you add it to Titanpanel or Fubar it should have the same functionallity.<br/><br/>
 ![minimap icon](https://imgur.com/WWkA7i0.png)
-![minimap icon option](https://imgur.com/nylf6jX.png)
+![minimap icon option](https://imgur.com/nylf6jX.png)  
 ![Titanpanel icon](https://imgur.com/VIKhLtP.png)
 ![Titanpanel icon option](https://imgur.com/xndI110.png)
 
