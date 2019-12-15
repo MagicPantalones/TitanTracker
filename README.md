@@ -8,16 +8,13 @@ TitanTracker is a simple addon that collects all your tracking spells into a min
 * Rigth-click button, or select Stop Tracking, to dismiss tracking spell.
 * /ttoggle to toggle the minimap button visibility.
 * If you add it to Titanpanel or Fubar it should have the same functionallity.
-
-![minimap icon](https://imgur.com/WWkA7i0)
-![minimap icon option](https://imgur.com/nylf6jX)
-![Titanpanel icon](https://imgur.com/VIKhLtP)
-![Titanpanel icon option](https://imgur.com/xndI110)
+![minimap icon](https://imgur.com/WWkA7i0.png)
+![minimap icon option](https://imgur.com/nylf6jX.png)
+![Titanpanel icon](https://imgur.com/VIKhLtP.png)
+![Titanpanel icon option](https://imgur.com/xndI110.png)
 
 ### Libraries used
 
-[Ace3](https://www.wowace.com/projects/ace3)
-[LibDataBroker-1.1](https://www.wowace.com/projects/libdatabroker-1-1)
-[LibDBIcon-1.0](https://www.wowace.com/projects/libdbicon-1-0)
+[Ace3](https://www.wowace.com/projects/ace3)  [LibDataBroker-1.1](https://www.wowace.com/projects/libdatabroker-1-1)  [LibDBIcon-1.0](https://www.wowace.com/projects/libdbicon-1-0)
 
-#### Got some help from [WoW-TrackingEye](https://github.com/Linden-Ryuujin/WoW-TrackingEye)
+#### Got some inspiration from [WoW-TrackingEye addon](https://github.com/Linden-Ryuujin/WoW-TrackingEye)
