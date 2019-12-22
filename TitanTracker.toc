@@ -2,7 +2,7 @@
 ## Title: TitanTracker
 ## Notes: Titan plugin to manage tracking spells.
 ## Author: Mackattack - Stonespine
-## Version: 0.9
+## Version: 0.95
 
 ## SavedVariables: TitanTrackerDB
 

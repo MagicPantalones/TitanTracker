@@ -75,7 +75,7 @@ function TitanTracker:OnInitialize()
         },
         char = {
             tt = {
-                prefTracker = 0,
+                prefTracker = 1,
                 prefOnLogin = true,
             }
         },
@@ -122,7 +122,7 @@ function TitanTracker:Picker()
 				func = function()
                     CastSpellByID(spell[2])
                 end,
-                checked = IsActive(spell[2])
+                checked = TitanTracker:IsActive(spell[2])
 			})
 		end
     end
