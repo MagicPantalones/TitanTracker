@@ -147,14 +147,16 @@ function TitanTracker:MINIMAP_UPDATE_TRACKING()
         broker.icon = "134400";
         broker.text = "No Tracking Active";
         TitanTracker:SetMinimapIcon(134400)
+        currentTracker = 0;
     else
 
         broker.icon = texture;
         TitanTracker:SetMinimapIcon(texture)
-        
+
         for k,spell in pairs(spells) do
             if spell[1] == texture then
                 broker.text = GetSpellInfo(spell[2]);
+                currentTracker = spell[2];
             end
         end
     end
