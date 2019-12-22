@@ -1,3 +1,32 @@
+-----------
+-- TODOS in v0.95
+
+-- General
+-- Turn on last tracked on death
+-- Register for on player alive event and on player entered world event (look for way to register only on first session enter event)
+
+-- Options
+-- Implement options dropdown on ctrl + right-click
+-- Option with preferred tracker (tracker that loads on startup)
+-- Option to set if lasted tracked or preferred tracker should show on death.
+
+-- Bugfixes
+-- Move spells variable assignment to player entered world event. (fixes druid trackHumanoids bug)
+
+-----------
+
+-----------
+-- Changelog
+
+-- Features
+
+-- Bugfixes
+
+----------
+
+local currentTracker = nil;
+
+
 local TitanTracker = LibStub("AceAddon-3.0"):NewAddon("TitanTracker", "AceConsole-3.0", "AceEvent-3.0")
 
 -- first value in array is icon id, and second is spell id
@@ -43,14 +72,28 @@ function TitanTracker:OnInitialize()
 				minimapPos = 142,
 				lock = true,
 			},
-		},
+        },
+        char = {
+            tt = {
+                prefTracker = 0,
+                prefOnLogin = true,
+            }
+        },
 	})
 
     MiniMapTrackingFrame:SetScale(0.001)
     LDBIcon:Register("TitanTrackerData", broker, self.db.profile.minimap)
 
     self:RegisterChatCommand("ttoggle", "Tt_toggle")
+
     TitanTracker:RegisterEvent("MINIMAP_UPDATE_TRACKING")
+
+    -- Get preferred tracker and set current tracker variable
+    TitanTracker:RegisterEvent("PLAYER_LOGIN", function() currentTracker = self.db.char.tt.prefTracker end)
+
+    -- Set currentTracker as active 
+    TitanTracker:RegisterEvent("PLAYER_UNGHOST", "OnRespawn")
+    TitanTracker:RegisterEvent("PLAYER_ALIVE", "OnRespawn")
 
 end
 
@@ -76,10 +119,10 @@ function TitanTracker:Picker()
 			table.insert(menu, {
 				text = GetSpellInfo(spell[2]),
                 icon = GetSpellTexture(spell[2]),
-                notCheckable = true,
 				func = function()
                     CastSpellByID(spell[2])
-				end
+                end,
+                checked = IsActive(spell[2])
 			})
 		end
     end
@@ -92,10 +135,9 @@ function TitanTracker:Picker()
         end
     })
 
-    local menuFrame = CreateFrame("Frame", "ExampleMenuFrame", UIParent, "UIDropDownMenuTemplate")
+    local menuFrame = CreateFrame("Frame", "ActiveSelectFrame", UIParent, "UIDropDownMenuTemplate")
 	EasyMenu(menu, menuFrame, "cursor", 0 , 0, "MENU");
 end
-
 
 function TitanTracker:MINIMAP_UPDATE_TRACKING()
 
@@ -118,6 +160,12 @@ function TitanTracker:MINIMAP_UPDATE_TRACKING()
     end
 end
 
+function TitanTracker:OnRespawn()
+    if IsPlayerSpell(currentTracker) then
+        CastSpellByID(currentTracker)
+    end
+end
+
 function TitanTracker:SetMinimapIcon(texture)
     local mmBtn = LDBIcon:GetMinimapButton("TitanTrackerData")
 
@@ -125,4 +173,8 @@ function TitanTracker:SetMinimapIcon(texture)
         mmBtn.icon:SetTexture(texture)
     end
 
+end
+
+function TitanTracker:IsActive(spellId) 
+    return spellId == currentTracker
 end
